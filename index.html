@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahadev Cloth Store</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #f8f9fc;
+            --text: #000;
+            --card: #fff;
+            --header: linear-gradient(90deg, #000, #333);
+        }
+
+        body.dark {
+            --bg: #121212;
+            --text: #fff;
+            --card: #1e1e1e;
+            --header: linear-gradient(90deg, #000, #111);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        header {
+            background: var(--header);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .toggle {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #444;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .banner {
+            background: url('https://images.unsplash.com/photo-1445205170230-053b83016050') center/cover;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .container {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .price {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .map {
+            margin: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #111;
+            color: white;
+        }
+
+        /* Floating Menu */
+        .fab {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .fab-main {
+            background: #000;
+            color: white;
+            padding: 15px 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease;
+        }
+
+        .fab-main:active {
+            background: #444;
+        }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
+            }
+
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            }
+        }
+
+        @keyframes colorChange {
+            0% {
+                background: #000;
+            }
+
+            25% {
+                background: #007bff;
+            }
+
+            50% {
+                background: #28a745;
+            }
+
+            75% {
+                background: #ff5722;
+            }
+
+            100% {
+                background: #000;
+            }
+        }
+
+        70% {
+            transform: scale(1.05);
+            box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+        }
+
+        100% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        }
+        }
+
+        .fab-menu {
+            display: none;
+            flex-direction: column;
+            margin-bottom: 10px;
+            gap: 10px;
+            align-items: flex-end;
+        }
+
+        .fab-menu.show {
+            display: flex;
+        }
+
+        .fab-menu.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .fab-menu a {
+            text-decoration: none;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+        }
+
+        .fab-menu.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .fab-menu a {
+            text-decoration: none;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .call-btn {
+            background: #007bff;
+        }
+
+        .wa-btn {
+            background: #25D366;
+            padding: 12px 16px;
+            border-radius: 50px;
+            display: inline-block;
+            font-size: 18px;
+        }
+
+        .trishul {
+            width: 42px;
+            height: 42px;
+            filter: drop-shadow(0 0 6px gold) drop-shadow(0 0 12px orange);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 4px gold) drop-shadow(0 0 8px orange);
+            }
+
+            to {
+                filter: drop-shadow(0 0 10px gold) drop-shadow(0 0 18px orange);
+            }
+        }
+
+        /* Premium Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: linear-gradient(135deg, #0f0f10, #1f1f22);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .header-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .brand-name {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, #f6d365, #fda085);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.25);
+        }
+
+        .brand-sub {
+            font-size: 13px;
+            color: #cfcfd6;
+            margin-top: 2px;
+        }
+
+        .header::after {
+            content: "";
+            display: block;
+            height: 2px;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.6), transparent);
+        }
+
+        body.dark .header {
+            background: linear-gradient(135deg, #000, #0e0e11);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-inner">
+            <div class="brand">
+                <div class="brand-name">महादेव क्लॉथ स्टोर</div>
+                <div class="brand-sub">Owner: Radhe Shyam Yadav</div>
+            </div>
+            <button class="toggle" onclick="toggleMode()">🌙</button>
+        </div>
+    </header>
+
+    <div class="banner">Latest Fashion Collection</div>
+
+    <div class="container">
+        <div class="card">
+            <img src="r1.jpeg">
+            <div class="card-content">
+                <h3>राजकुमारी शाही हैवी एम्ब्रॉयडर्ड ब्राइडल लहंगा</h3>
+                <p class="price">₹15,999</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="rp.jpeg">
+            <div class="card-content">
+                <h3>राजस्थानी पोशाक (लेहंगा)</h3>
+                <p class="price">₹2,486</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="map">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!4v1775971325767!6m8!1m7!1sU5KmNvFxpxSJEKt1KeJe2A!2m2!1d26.95903048404827!2d75.53970273978837!3f88.7494093317593!4f-6.224585019765172!5f2.3612899620529753"
+            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <footer>
+        © 2026 Mahadev Cloth Store<br>
+        📞 Call:91+ 8306024364
+    </footer>
+
+    <!-- Floating Popup Menu -->
+    <!-- Floating Popup Menu -->
+    <div class="fab">
+        <div class="fab-menu" id="menu">
+            <a href="tel:+918306024364" class="call-btn">📞 Call Now</a>
+            <a href="https://wa.me/918306024364" class="wa-btn" target="_blank">💬 WhatsApp</a>
+        </div>
+
+    </div>
+    <div class="fab-main" onclick="toggleMenu()">📞💬 Contact</div>
+    </div>
+
+    <script>
+        function toggleMode() {
+            document.body.classList.toggle("dark");
+        }
+
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            if (menu.classList.contains("show")) {
+                menu.classList.remove("show");
+            } else {
+                menu.classList.add("show");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
