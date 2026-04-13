@@ -4,374 +4,350 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahadev Cloth Store</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
+    <title>Dr. Suraj Yadav - Physio Care Clinic</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600&display=swap"
+        rel="stylesheet">
     <style>
-        :root {
-            --bg: #f8f9fc;
-            --text: #000;
-            --card: #fff;
-            --header: linear-gradient(90deg, #000, #333);
-        }
-
-        body.dark {
-            --bg: #121212;
-            --text: #fff;
-            --card: #1e1e1e;
-            --header: linear-gradient(90deg, #000, #111);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            transition: 0.3s;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            background: var(--bg);
-            color: var(--text);
+            background: #f4f7f9;
+            color: #333;
+        }
+
+        .dark {
+            background: #121212;
+            color: #eee;
+        }
+
+        .dark .card {
+            background: #1e1e1e;
+        }
+
+        .dark header {
+            background: #000;
+        }
+
+        .dark input,
+        .dark select {
+            background: #2a2a2a;
+            color: #fff;
+            border: 1px solid #555;
+        }
+
+        .dark table {
+            color: #fff;
         }
 
         header {
-            background: var(--header);
+            background: #0d1b2a;
             color: white;
-            padding: 20px;
-            text-align: center;
-            font-size: 26px;
-            font-weight: bold;
+            padding: 20px 30px;
             position: relative;
+            display: flex;
+            align-items: center;
         }
 
-        .toggle {
+        .logo-box {
+            position: absolute;
+            left: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-box img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #00c6ff;
+        }
+
+        .title-box {
+            margin: auto;
+            text-align: center;
+        }
+
+        .title-box h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .title-box p {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        .toggle-btn {
             position: absolute;
             right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #444;
-            color: white;
+            background: #fff;
+            color: #000;
             border: none;
             padding: 8px 12px;
             border-radius: 20px;
             cursor: pointer;
         }
 
-        .banner {
-            background: url('https://images.unsplash.com/photo-1445205170230-053b83016050') center/cover;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
         .container {
             padding: 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+            max-width: 1000px;
+            margin: auto;
         }
 
         .card {
-            background: var(--card);
+            background: white;
+            padding: 25px;
             border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
-        .card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-
-        .card-content {
-            padding: 15px;
-            text-align: center;
-        }
-
-        .price {
-            color: #28a745;
-            font-weight: bold;
-        }
-
-        .map {
-            margin: 20px;
-            border-radius: 15px;
-            overflow: hidden;
-        }
-
-        footer {
-            text-align: center;
-            padding: 15px;
-            background: #111;
-            color: white;
-        }
-
-        /* Floating Menu */
-        .fab {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-        }
-
-        .fab-main {
-            background: #000;
-            color: white;
-            padding: 15px 18px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: background 0.3s ease;
-        }
-
-        .fab-main:active {
-            background: #444;
-        }
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
-            }
-
-            70% {
-                transform: scale(1.05);
-                box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
-            }
-
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-            }
-        }
-
-        @keyframes colorChange {
-            0% {
-                background: #000;
-            }
-
-            25% {
-                background: #007bff;
-            }
-
-            50% {
-                background: #28a745;
-            }
-
-            75% {
-                background: #ff5722;
-            }
-
-            100% {
-                background: #000;
-            }
-        }
-
-        70% {
-            transform: scale(1.05);
-            box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
-        }
-
-        100% {
-            transform: scale(1);
-            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-        }
-        }
-
-        .fab-menu {
-            display: none;
-            flex-direction: column;
-            margin-bottom: 10px;
-            gap: 10px;
-            align-items: flex-end;
-        }
-
-        .fab-menu.show {
-            display: flex;
-        }
-
-        .fab-menu.show {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-
-        .fab-menu a {
-            text-decoration: none;
-            color: white;
-            padding: 12px 16px;
-            border-radius: 50px;
-            font-size: 14px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            display: inline-block;
-        }
-
-        .fab-menu.show {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-
-        .fab-menu a {
-            text-decoration: none;
-            color: white;
-            padding: 12px 16px;
-            border-radius: 50px;
-            font-size: 14px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .call-btn {
-            background: #007bff;
-        }
-
-        .wa-btn {
-            background: #25D366;
-            padding: 12px 16px;
-            border-radius: 50px;
-            display: inline-block;
-            font-size: 18px;
-        }
-
-        .trishul {
-            width: 42px;
-            height: 42px;
-            filter: drop-shadow(0 0 6px gold) drop-shadow(0 0 12px orange);
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from {
-                filter: drop-shadow(0 0 4px gold) drop-shadow(0 0 8px orange);
-            }
-
-            to {
-                filter: drop-shadow(0 0 10px gold) drop-shadow(0 0 18px orange);
-            }
-        }
-
-        /* Premium Header */
-        .header {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            background: linear-gradient(135deg, #0f0f10, #1f1f22);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .header-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 14px 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .brand-name {
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            background: linear-gradient(90deg, #f6d365, #fda085);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.25);
-        }
-
-        .brand-sub {
-            font-size: 13px;
-            color: #cfcfd6;
-            margin-top: 2px;
-        }
-
-        .header::after {
-            content: "";
+        .profile-img {
             display: block;
-            height: 2px;
-            width: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.6), transparent);
+            margin: auto;
+            width: 180px;
+            border-radius: 50%;
         }
 
-        body.dark .header {
-            background: linear-gradient(135deg, #000, #0e0e11);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        .form-card {
+            background: linear-gradient(135deg, #d0f0ff, #ffffff);
+            border: 2px solid #00c6ff;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background: #0d1b2a;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            width: auto;
+            /* FIX: button full width removed */
+            display: inline-block;
+        }
+
+        /* Specific full-width only for form submit */
+        .form-card button {
+            width: 100%;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        ul {
+            padding-left: 20px;
+            line-height: 1.8;
+        }
+
+        .contact {
+            text-align: center;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            overflow-x: auto;
+            display: block;
+            /* responsive fix */
+        }
+
+        .table thead,
+        .table tbody {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        .table th,
+        .table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+            word-wrap: break-word;
+            font-size: 13px;
+        }
+
+        .table td:last-child {
+            text-align: center;
+        }
+
+        .table th {
+            background: #eaf6ff;
+        }
+
+        .dark .table th {
+            background: #333;
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media(max-width:600px) {
+
+            .table th,
+            .table td {
+                font-size: 12px;
+                padding: 6px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <header class="header">
-        <div class="header-inner">
-            <div class="brand">
-                <div class="brand-name">महादेव क्लॉथ स्टोर</div>
-                <div class="brand-sub">Owner: Radhe Shyam Yadav</div>
-            </div>
-            <button class="toggle" onclick="toggleMode()">🌙</button>
+    <header>
+        <div class="logo-box">
+            <img src="logo.webp" alt="logo">
         </div>
+        <div class="title-box">
+            <h1>Dr. Suraj Yadav</h1>
+            <p>Expert Physiotherapist</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleMode()">🌙</button>
     </header>
 
-    <div class="banner">Latest Fashion Collection</div>
-
     <div class="container">
-        <div class="card">
-            <img src="r1.jpeg">
-            <div class="card-content">
-                <h3>राजकुमारी शाही हैवी एम्ब्रॉयडर्ड ब्राइडल लहंगा</h3>
-                <p class="price">₹15,999</p>
-            </div>
-        </div>
 
         <div class="card">
-            <img src="rp.jpeg">
-            <div class="card-content">
-                <h3>राजस्थानी पोशाक (लेहंगा)</h3>
-                <p class="price">₹2,486</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="map">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!4v1775971325767!6m8!1m7!1sU5KmNvFxpxSJEKt1KeJe2A!2m2!1d26.95903048404827!2d75.53970273978837!3f88.7494093317593!4f-6.224585019765172!5f2.3612899620529753"
-            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-
-    <footer>
-        © 2026 Mahadev Cloth Store<br>
-        📞 Call:91+ 8306024364
-    </footer>
-
-    <!-- Floating Popup Menu -->
-    <!-- Floating Popup Menu -->
-    <div class="fab">
-        <div class="fab-menu" id="menu">
-            <a href="tel:+918306024364" class="call-btn">📞 Call Now</a>
-            <a href="https://wa.me/918306024364" class="wa-btn" target="_blank">💬 WhatsApp</a>
+            <h2 style="text-align:center;">About Doctor</h2>
+            <img src="suraj.jpeg" class="profile-img" alt="doctor">
+            <p style="text-align:center;">Professional physiotherapist helping patients recover from pain.</p>
         </div>
 
-    </div>
-    <div class="fab-main" onclick="toggleMenu()">📞💬 Contact</div>
+        <div class="card">
+            <h2>Our Services</h2>
+            <ul>
+                <li>Back Pain Treatment</li>
+                <li>Neck Pain Therapy</li>
+                <li>Sports Injury Rehabilitation</li>
+                <li>Home Visit Available</li>
+            </ul>
+        </div>
+
+        <div class="card form-card">
+            <h2 style="text-align:center;">Book Appointment</h2>
+            <form onsubmit="submitForm(event)">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="tel" id="phone" placeholder="Phone Number" pattern="[0-9]{10}" required>
+                <input type="date" id="date" required>
+                <select id="service" required>
+                    <option value="">Select Service</option>
+                    <option>Back Pain</option>
+                    <option>Neck Pain</option>
+                    <option>Sports Injury</option>
+                    <option>Home Visit</option>
+                </select>
+                <button type="submit">Book Now</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>Admin Panel (Appointments)</h2>
+            <table class="table" id="appointmentTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Date</th>
+                        <th>Service</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="card contact">
+            <h2>Contact</h2>
+            <p>📞 Phone: 8079078896</p>
+            <p>📍 Location: Vaishali Nagar,Jaipur</p>
+            <button onclick="openWhatsApp()">Chat on WhatsApp</button>
+        </div>
+
     </div>
 
     <script>
-        function toggleMode() {
-            document.body.classList.toggle("dark");
+        // Load saved data
+        window.onload = function () {
+            let data = JSON.parse(localStorage.getItem('appointments')) || [];
+            data.forEach((item, index) => addRow(item, index));
         }
 
-        function toggleMenu() {
-            var menu = document.getElementById("menu");
-            if (menu.classList.contains("show")) {
-                menu.classList.remove("show");
-            } else {
-                menu.classList.add("show");
-            }
+        function submitForm(e) {
+            e.preventDefault();
+
+            let obj = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                date: document.getElementById('date').value,
+                service: document.getElementById('service').value
+            };
+
+            let data = JSON.parse(localStorage.getItem('appointments')) || [];
+            data.push(obj);
+            localStorage.setItem('appointments', JSON.stringify(data));
+
+            addRow(obj, data.length - 1);
+
+            e.target.reset();
+            alert('Appointment Saved Successfully');
+        }
+
+        function addRow(obj, index) {
+            let table = document.querySelector('#appointmentTable tbody');
+            let row = table.insertRow();
+
+            row.insertCell(0).innerText = obj.name;
+            row.insertCell(1).innerText = obj.phone;
+            row.insertCell(2).innerText = obj.date;
+            row.insertCell(3).innerText = obj.service;
+
+            // Delete button
+            let deleteCell = row.insertCell(4);
+            let btn = document.createElement('button');
+            btn.innerText = 'Delete';
+            btn.style.background = 'red';
+            btn.style.color = 'white';
+            btn.style.padding = '5px 8px';
+            btn.style.borderRadius = '6px';
+            btn.style.fontSize = '12px';
+            btn.style.whiteSpace = 'nowrap';
+
+            btn.onclick = function () {
+                row.remove();
+                let data = JSON.parse(localStorage.getItem('appointments')) || [];
+                data.splice(index, 1);
+                localStorage.setItem('appointments', JSON.stringify(data));
+                location.reload();
+            };
+
+            deleteCell.appendChild(btn);
+        }
+
+        function openWhatsApp() {
+            window.open("https://wa.me/918079078896", "_blank");
+        }
+
+        function toggleMode() {
+            document.body.classList.toggle("dark");
         }
     </script>
 
