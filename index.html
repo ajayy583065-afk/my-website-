@@ -4,490 +4,338 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Ajay ❤️ Kavita</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Pacifico&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
     <style>
-        /* ================= GLOBAL ================= */
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            overflow-x: hidden;
-            color: white;
             min-height: 100vh;
-            transition: 0.5s;
-        }
-
-        img {
-            display: block;
-        }
-
-        /* ================= HEART RAIN ================= */
-
-        .hearts {
-            position: fixed;
-            inset: 0;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .heart {
-            position: absolute;
-            bottom: -50px;
-            color: #ff4d6d;
-            font-size: 22px;
-            animation: heartFall linear forwards;
-            user-select: none;
-            text-shadow:
-                0 0 10px #ff4d6d,
-                0 0 20px #ff4d6d,
-                0 0 40px #ff4d6d;
-        }
-
-        @keyframes heartFall {
-
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(-120vh) rotate(360deg);
-                opacity: 0;
-            }
-
-        }
-
-        /* ================= INTRO ================= */
-
-        .intro {
-            position: fixed;
-            inset: 0;
-            background: black;
-            z-index: 99999;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
-            animation: introHide 4s forwards;
+            background: linear-gradient(135deg, #ff0066, #ff4d88, #ffd6e0);
+            overflow: hidden;
+            padding: 20px;
         }
 
-        .intro h1 {
-            font-size: 80px;
-            font-family: 'Pacifico', cursive;
-            animation: glow 2s infinite alternate;
+        /* HEARTS */
+
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
         }
 
-        .intro p {
-            margin-top: 15px;
-            letter-spacing: 4px;
-            font-size: 20px;
+        .hearts span {
+            position: absolute;
+            bottom: -100px;
+            font-size: 24px;
+            animation: heart 10s linear infinite;
+            opacity: 0.7;
         }
 
-        @keyframes introHide {
+        .hearts span:nth-child(1) {
+            left: 10%;
+        }
+
+        .hearts span:nth-child(2) {
+            left: 25%;
+        }
+
+        .hearts span:nth-child(3) {
+            left: 40%;
+        }
+
+        .hearts span:nth-child(4) {
+            left: 60%;
+        }
+
+        .hearts span:nth-child(5) {
+            left: 80%;
+        }
+
+        @keyframes heart {
 
             0% {
-                opacity: 1;
+                transform: translateY(0) scale(0.5);
+                opacity: 0;
             }
 
-            85% {
+            50% {
                 opacity: 1;
             }
 
             100% {
+                transform: translateY(-120vh) scale(1.5);
                 opacity: 0;
-                visibility: hidden;
             }
 
         }
 
-        @keyframes glow {
+        /* CARD BOX */
 
-            from {
-                text-shadow: 0 0 10px white;
-            }
-
-            to {
-                text-shadow:
-                    0 0 20px #ff4d6d,
-                    0 0 40px #ff4d6d,
-                    0 0 70px #ff4d6d;
-            }
-
-        }
-
-        /* ================= HEADER ================= */
-
-        header {
-            text-align: center;
-            padding: 80px 20px 30px;
-            position: relative;
-            z-index: 2;
-        }
-
-        header h1 {
-            font-size: 75px;
-            font-family: 'Pacifico', cursive;
-            animation: glow 2s infinite alternate;
-        }
-
-        /* ================= TYPING ================= */
-
-        .typing {
-            margin-top: 20px;
-            font-size: 24px;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 3px solid white;
-            width: 0;
-            margin-inline: auto;
-            animation: typing 5s steps(30) infinite alternate;
-        }
-
-        @keyframes typing {
-
-            from {
-                width: 0;
-            }
-
-            to {
-                width: 390px;
-            }
-
-        }
-
-        /* ================= BUTTONS ================= */
-
-        .top-buttons {
-            margin-top: 25px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        button {
-            border: none;
-            padding: 12px 24px;
-            border-radius: 40px;
-            cursor: pointer;
-            font-size: 15px;
-            font-weight: bold;
+        .card-box {
+            width: 380px;
+            height: 680px;
+            perspective: 2000px;
+            animation: floating 4s ease-in-out infinite;
             transition: 0.4s;
         }
 
-        button:hover {
-            transform: scale(1.08);
+        .card-box:hover {
+            transform: scale(1.03);
         }
 
-        .love-btn {
-            background: #ff4d6d;
-            color: white;
-        }
+        @keyframes floating {
 
-        .mode-btn {
-            background: white;
-            color: black;
-        }
+            0% {
+                transform: translateY(0px);
+            }
 
-        /* ================= SLIDER ================= */
+            50% {
+                transform: translateY(-12px);
+            }
 
-        .slider {
-            width: 100%;
-            overflow: hidden;
-            padding: 20px 0;
-            position: relative;
-            z-index: 2;
-        }
+            100% {
+                transform: translateY(0px);
+            }
 
-        .slider-track {
-            display: flex;
-            gap: 20px;
-            width: max-content;
-            animation: smoothScroll 28s linear infinite;
-        }
-
-        .slider-track:hover {
-            animation-play-state: paused;
         }
 
         /* CARD */
 
-        .slide-card {
-            width: 320px;
-            height: 450px;
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+        }
+
+        /* FLIP */
+
+        .card.flip {
+            transform: rotateY(180deg);
+        }
+
+        /* FRONT & BACK */
+
+        .front,
+        .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
             border-radius: 30px;
             overflow: hidden;
-            flex-shrink: 0;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
-            transition: 0.5s;
-        }
+            backface-visibility: hidden;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
 
-        .slide-card:hover {
-            transform: translateY(-10px) scale(1.04);
-            box-shadow: 0 0 35px #ff4d6d;
-        }
+            box-shadow:
+                0 25px 60px rgba(0, 0, 0, 0.5);
 
-        .slide-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.5s;
-        }
+            transition: 0.4s;
 
-        .slide-card:hover img {
-            transform: scale(1.08);
-        }
-
-        @keyframes smoothScroll {
-
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(calc(-340px * 6));
-            }
-
-        }
-
-        /* ================= LOVE CARDS ================= */
-
-        .cards {
-            width: 92%;
-            margin: 40px auto 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .card {
-            position: relative;
-            height: 340px;
-            border-radius: 25px;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.08);
-            transition: 0.5s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 0 30px #ff4d6d;
-        }
-
-        .card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.5s;
-        }
-
-        .card:hover img {
-            transform: scale(1.1);
-        }
-
-        .overlay {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            padding: 20px;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-        }
-
-        .overlay h2 {
-            font-size: 22px;
-        }
-
-        /* ================= POPUP ================= */
-
-        .popup {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.8);
-            display: none;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 9999;
-        }
-
-        .popup-content {
-            width: 90%;
-            max-width: 500px;
-            background: white;
-            color: #111;
-            padding: 35px;
-            border-radius: 25px;
+            padding: 25px;
             text-align: center;
         }
 
-        .popup-content h2 {
-            color: #ff4d6d;
-            font-family: 'Pacifico', cursive;
+        /* HOVER GLOW */
+
+        .front:hover,
+        .back:hover {
+            box-shadow:
+                0 0 25px rgba(255, 255, 255, 0.5),
+                0 25px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        /* FRONT */
+
+        .front h1 {
+            font-size: 40px;
+            color: white;
             margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
         }
 
-        .popup-content p {
-            line-height: 1.8;
+        .main-img {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+            border-radius: 25px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            transition: 0.4s;
         }
 
-        .close-btn {
+        .main-img:hover {
+            transform: scale(1.03);
+        }
+
+        .front p {
             margin-top: 20px;
-            background: #ff4d6d;
+            font-size: 18px;
+            line-height: 1.7;
             color: white;
         }
 
-        /* ================= MUSIC ================= */
+        /* BACK */
 
-        .music-player {
+        .back {
+            transform: rotateY(180deg);
+        }
+
+        .back h2 {
+            font-size: 30px;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        /* GALLERY */
+
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 18px;
+            cursor: pointer;
+            transition: 0.4s;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px white;
+        }
+
+        /* AUDIO */
+
+        audio {
+            width: 100%;
+            margin-top: 20px;
+            filter: drop-shadow(0 0 10px white);
+        }
+
+        /* BUTTON */
+
+        .btn {
+            margin-top: 20px;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 40px;
+            background: white;
+            color: #ff0066;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+
+        .btn:hover {
+            transform: scale(1.08);
+            background: #ff0066;
+            color: white;
+            box-shadow: 0 0 20px #ff0066;
+        }
+
+        /* POPUP */
+
+        .popup {
             position: fixed;
-            right: 10px;
-            bottom: 10px;
-            z-index: 99999;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 6px 10px;
-            border-radius: 50px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            padding: 20px;
         }
 
-        .music-player audio {
-            width: 140px;
-            height: 30px;
+        .popup img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 20px;
+            box-shadow: 0 0 40px white;
+            animation: zoom 0.4s ease;
         }
 
-        /* ================= LIGHT PINK MODE ================= */
+        @keyframes zoom {
 
-        .light-mode {
-            background: linear-gradient(135deg,
-                    #ffd6e7,
-                    #ffc2d1,
-                    #ffb3c6,
-                    #ffc8dd);
-            color: #111;
-        }
-
-        .light-mode header h1 {
-            color: #ff1e56;
-        }
-
-        .light-mode .typing {
-            color: #111;
-            border-right: 3px solid #ff1e56;
-        }
-
-        .light-mode .card {
-            background: rgba(255, 255, 255, 0.45);
-        }
-
-        .light-mode .slide-card {
-            background: rgba(255, 255, 255, 0.45);
-        }
-
-        .light-mode .love-btn {
-            background: #ff4d88;
-        }
-
-        .light-mode .mode-btn {
-            color: #ff1e56;
-        }
-
-        .light-mode .overlay {
-            background: linear-gradient(to top,
-                    rgba(255, 255, 255, 0.8),
-                    transparent);
-        }
-
-        .light-mode .overlay h2 {
-            color: #111;
-        }
-
-        .light-mode .popup-content {
-            background: #fff0f5;
-        }
-
-        .light-mode .heart {
-            color: #ff4d88;
-        }
-
-        /* ================= RESPONSIVE ================= */
-
-        @media(max-width:768px) {
-
-            header h1 {
-                font-size: 42px;
+            from {
+                transform: scale(0.5);
+                opacity: 0;
             }
 
-            .typing {
-                width: 230px;
-                font-size: 15px;
+            to {
+                transform: scale(1);
+                opacity: 1;
             }
 
-            .slide-card {
-                width: 210px;
-                height: 300px;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 45px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* MOBILE */
+
+        @media(max-width:500px) {
+
+            .card-box {
+                width: 100%;
+                max-width: 350px;
+                height: 580px;
             }
 
-            .cards {
-                grid-template-columns: 1fr;
-            }
-
-            .card {
+            .main-img {
                 height: 280px;
             }
 
-            .music-player audio {
-                width: 110px;
+            .gallery img {
+                height: 95px;
             }
 
-            @keyframes smoothScroll {
-
-                100% {
-                    transform: translateX(calc(-230px * 6));
-                }
-
+            .front h1 {
+                font-size: 32px;
             }
 
-        }
-
-        @media(max-width:480px) {
-
-            header h1 {
-                font-size: 34px;
-            }
-
-            .slide-card {
-                width: 180px;
-                height: 250px;
-            }
-
-            .typing {
-                width: 200px;
-                font-size: 13px;
-            }
-
-            .card {
-                height: 240px;
-            }
-
-            @keyframes smoothScroll {
-
-                100% {
-                    transform: translateX(calc(-200px * 6));
-                }
-
+            .back h2 {
+                font-size: 26px;
             }
 
         }
@@ -498,135 +346,65 @@
 
     <!-- HEARTS -->
 
-    <div class="hearts" id="hearts"></div>
-
-    <!-- INTRO -->
-
-    <div class="intro">
-        <h1>Ajay ❤️ Kavita</h1>
-        <p>FOREVER LOVE</p>
+    <div class="hearts">
+        <span>❤️</span>
+        <span>💖</span>
+        <span>💕</span>
+        <span>💘</span>
+        <span>💞</span>
     </div>
 
-    <!-- HEADER -->
+    <!-- CARD -->
 
-    <header>
+    <div class="card-box">
 
-        <h1>Ajay ❤️ Kavita</h1>
+        <div class="card" id="card">
 
-        <div class="typing">
-            I Love You Kavita Forever ❤️
-        </div>
+            <!-- FRONT -->
 
-        <div class="top-buttons">
+            <div class="front">
 
-            <button class="love-btn" onclick="openPopup()">
-                Love Letter 💌
-            </button>
+                <h1>Ajay ❤️ Kavita</h1>
 
-            <button class="mode-btn" onclick="toggleMode()">
-                Pink Mode 🌸
-            </button>
+                <img src="kavi2.jpeg" class="main-img">
 
-        </div>
+                <p>
+                    💖 “I Love You Forever…
+                    and ever, and ever, Radhe ❤️✨
+                </p>
 
-    </header>
+                <button class="btn" onclick="flipCard()">
+                    Open Memories 💖
+                </button>
 
-    <!-- SLIDER -->
-
-    <div class="slider">
-
-        <div class="slider-track">
-
-            <div class="slide-card"><img src="kavi1.jpeg"></div>
-            <div class="slide-card"><img src="kavi3.jpeg"></div>
-            <div class="slide-card"><img src="kavi2.jpeg"></div>
-            <div class="slide-card"><img src="kavi5.jpeg"></div>
-            <div class="slide-card"><img src="kavi8.jpeg"></div>
-            <div class="slide-card"><img src="kavi11.jpeg"></div>
-
-            <!-- DUPLICATE -->
-
-            <div class="slide-card"><img src="kavi12.jpeg"></div>
-            <div class="slide-card"><img src="kavi14.jpeg"></div>
-            <div class="slide-card"><img src="kavi19.jpeg"></div>
-            <div class="slide-card"><img src="kavi20.png"></div>
-            <div class="slide-card"><img src="kavi17.jpeg"></div>
-            <div class="slide-card"><img src="kavi7.jpeg"></div>
-
-        </div>
-
-    </div>
-
-    <!-- LOVE CARDS -->
-
-    <div class="cards">
-
-        <div class="card">
-            <img src="kavi11.jpeg">
-            <div class="overlay">
-                <h2>Beautiful Smile 💖</h2>
             </div>
-        </div>
 
-        <div class="card">
-            <img src="kavi4.jpeg">
-            <div class="overlay">
-                <h2>Sweet Moments ✨</h2>
+            <!-- BACK -->
+
+            <div class="back">
+
+                <h2>Our Memories ❤️</h2>
+
+                <div class="gallery">
+
+                    <img src="kavi1.jpeg" onclick="openImage(this.src)">
+                    <img src="kavi3.jpeg" onclick="openImage(this.src)">
+                    <img src="kavi11.jpeg" onclick="openImage(this.src)">
+                    <img src="kavi12.jpeg" onclick="openImage(this.src)">
+
+                </div>
+
+                <audio controls loop autoplay>
+                    <source src="Saiyaara Reprise Female (Slowed  Reverb)  Shreya Ghoshal  SR Lofi.mp3"
+                        type="audio/mp3">
+                </audio>
+
+                <button class="btn" onclick="flipCard()">
+                    Back ❤️
+                </button>
+
             </div>
-        </div>
 
-        <div class="card">
-            <img src="kavi1.jpeg">
-            <div class="overlay">
-                <h2>Forever Together ❤️</h2>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="kavi7.jpeg">
-            <div class="overlay">
-                <h2>My Happiness 🌸</h2>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="cards">
-
-        <div class="card">
-            <img src="kavi6.jpeg">
-        </div>
-
-        <div class="card">
-            <img src="kavi9.jpeg">
-        </div>
-
-        <div class="card">
-            <img src="kavi10.jpeg">
-        </div>
-
-        <div class="card">
-            <img src="kavi13.jpeg">
-        </div>
-
-    </div>
-
-    <div class="cards">
-
-        <div class="card">
-            <img src="kavi15.jpeg">
-        </div>
-
-        <div class="card">
-            <img src="kavi16.jpeg">
-        </div>
-
-        <div class="card">
-            <img src="kavi18.jpeg">
-        </div>
-
-        <div class="card">
-            <img src="kavi21.png">
         </div>
 
     </div>
@@ -635,81 +413,51 @@
 
     <div class="popup" id="popup">
 
-        <div class="popup-content">
+        <span class="close" onclick="closeImage()">×</span>
 
-            <h2>My Love Letter 💌</h2>
-
-            <p>
-                Kavita ❤️ <br><br>
-                You are the most beautiful part of my life ❤️
-                Every moment with you feels magical ✨
-                I want to stay with you forever 💖
-            </p>
-
-            <button class="close-btn" onclick="closePopup()">
-                Close
-            </button>
-
-        </div>
-
-    </div>
-
-    <!-- MUSIC -->
-
-    <div class="music-player">
-
-        <audio controls autoplay loop>
-            <source src="Saiyaara Reprise Female (Slowed  Reverb)  Shreya Ghoshal  SR Lofi.mp3" type="audio/mp3">
-        </audio>
+        <img id="popup-img">
 
     </div>
 
     <script>
 
-        /* HEART RAIN */
+        /* FLIP CARD */
 
-        const heartsContainer = document.getElementById("hearts");
+        function flipCard() {
 
-        function createHeart() {
-
-            const heart = document.createElement("div");
-
-            heart.classList.add("heart");
-
-            const emojis = ["❤️", "💖", "💕", "💘", "💝"];
-
-            heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-
-            heart.style.left = Math.random() * 100 + "vw";
-
-            heart.style.fontSize = (Math.random() * 20 + 15) + "px";
-
-            heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
-
-            heartsContainer.appendChild(heart);
-
-            setTimeout(() => {
-                heart.remove();
-            }, 7000);
+            document.getElementById("card").classList.toggle("flip");
 
         }
 
-        setInterval(createHeart, 200);
+        /* OPEN IMAGE */
 
-        /* POPUP */
+        function openImage(src) {
 
-        function openPopup() {
             document.getElementById("popup").style.display = "flex";
+            document.getElementById("popup-img").src = src;
+
         }
 
-        function closePopup() {
+        /* CLOSE IMAGE */
+
+        function closeImage() {
+
             document.getElementById("popup").style.display = "none";
+
         }
 
-        /* PINK MODE */
+        /* OUTSIDE CLICK CLOSE */
 
-        function toggleMode() {
-            document.body.classList.toggle("light-mode");
+        window.onclick = function (e) {
+
+            const popup = document.getElementById("popup");
+
+            if (e.target == popup) {
+
+                popup.style.display = "none";
+
+            }
+
         }
 
     </script>
